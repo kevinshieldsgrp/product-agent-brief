@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discussion Guide — Marketplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFEF7;
+    --surface:#FFFFFF;
+    --surface-2:#FBF9EE;
+    --ink:#17160F;
+    --ink-muted:#6B6858;
+    --ink-faint:#948F76;
+    --border:#E8E3CC;
+    --border-strong:#D8D2B4;
+    --accent:#FFF200;
+    --accent-ink:#17160F;
+    --shadow: 0 1px 2px rgba(23,22,15,0.04), 0 6px 16px -8px rgba(23,22,15,0.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#161509;
+      --surface:#1E1C10;
+      --surface-2:#242212;
+      --ink:#F5F2E3;
+      --ink-muted:#B3AC8E;
+      --ink-faint:#7D785F;
+      --border:#3A3620;
+      --border-strong:#4B4629;
+      --accent:#FFF200;
+      --accent-ink:#17160F;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 20px -10px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#161509;
+    --surface:#1E1C10;
+    --surface-2:#242212;
+    --ink:#F5F2E3;
+    --ink-muted:#B3AC8E;
+    --ink-faint:#7D785F;
+    --border:#3A3620;
+    --border-strong:#4B4629;
+    --accent:#FFF200;
+    --accent-ink:#17160F;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 20px -10px rgba(0,0,0,0.5);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.55;
+  }
+  img{max-width:100%;}
+  .page{
+    max-width:920px;
+    margin:0 auto;
+    padding:48px 24px 64px;
+  }
+  h1,h2,h3{
+    font-family:"Roboto Slab","Georgia",serif;
+    text-wrap:balance;
+    margin:0;
+  }
+  code,.mono{ font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; }
+
+  .masthead{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding-bottom:24px;
+    border-bottom:2px solid var(--ink);
+    margin-bottom:32px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-muted);
+  }
+  .eyebrow .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    border:1.5px solid var(--ink);
+    flex:none;
+  }
+  .masthead h1{
+    font-size:clamp(28px,4.5vw,38px);
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .masthead h1 mark{
+    background:var(--accent);
+    color:var(--accent-ink);
+    padding:0 8px;
+    border-radius:3px;
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+  }
+  .masthead .dek{
+    font-size:15px;
+    color:var(--ink-muted);
+    max-width:64ch;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 18px;
+    font-size:12.5px;
+    color:var(--ink-faint);
+    font-family:"IBM Plex Mono",monospace;
+    margin-top:4px;
+  }
+  .meta-row b{ color:var(--ink-muted); font-weight:500; }
+
+  .agenda{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .agenda .full{ grid-column:1 / -1; }
+
+  .item{
+    background:var(--surface);
+    border:1px solid var(--border-strong);
+    border-radius:10px;
+    padding:16px 18px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .item-head{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .item-num{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    font-weight:500;
+    color:var(--ink-faint);
+    flex:none;
+  }
+  .item h2{
+    font-size:16px;
+    font-weight:600;
+  }
+  .item p{
+    margin:0;
+    font-size:13.5px;
+    color:var(--ink);
+  }
+  .item ul{
+    margin:0;
+    padding-left:18px;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    font-size:13.5px;
+  }
+  .item li{ color:var(--ink); }
+  .item li b{ font-weight:600; }
+  .item li::marker{ color:var(--ink-faint); }
+
+  .item.try-it{
+    background:var(--surface-2);
+    border-color:var(--ink);
+  }
+  .kv{ display:flex; flex-direction:column; gap:6px; }
+  .kv-row{ display:flex; flex-wrap:wrap; gap:6px 8px; align-items:baseline; font-size:13.5px; }
+  .kv-row .k{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    min-width:88px;
+  }
+  .item a{
+    color:var(--ink);
+    font-weight:600;
+    text-decoration:underline;
+    text-decoration-color:var(--border-strong);
+    text-underline-offset:2px;
+  }
+  .item a:hover{ text-decoration-color:var(--ink); }
+  .note{
+    font-size:12.5px;
+    color:var(--ink-faint);
+    font-style:italic;
+  }
+
+  .tag-row{ display:flex; flex-wrap:wrap; gap:6px; margin-top:2px; }
+  .tag{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:10.5px;
+    letter-spacing:0.03em;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    color:var(--ink-muted);
+    border-radius:5px;
+    padding:2px 7px;
+  }
+
+  .flow{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+  }
+  .flow .step{
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:4px 9px;
+    color:var(--ink);
+  }
+  .flow .arrow{ color:var(--ink-faint); }
+
+  footer{
+    margin-top:40px;
+    padding-top:16px;
+    border-top:1px solid var(--border-strong);
+    font-size:12px;
+    color:var(--ink-faint);
+    font-family:"IBM Plex Mono",monospace;
+  }
+
+  @media (max-width:680px){
+    .agenda{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="masthead">
+    <span class="eyebrow"><span class="dot"></span>Internal · for discussion</span>
+    <h1>Discussion Guide <mark>— Marketplace</mark></h1>
+    <p class="dek">A working session brief on the brand↔production marketplace prototype: what exists, what it's solving for, and the calls we need to make together.</p>
+    <div class="meta-row">
+      <span><b>Prepared by</b> Kevin Shields</span>
+      <span><b>Date</b> September 10, 2026</span>
+    </div>
+  </div>
+
+  <div class="agenda">
+
+    <div class="item full try-it">
+      <div class="item-head"><span class="item-num">00</span><h2>Try it</h2></div>
+      <div class="kv">
+        <div class="kv-row"><span class="k">Repo</span><a href="https://github.com/kevinshieldsgrp/brandmarket" target="_blank" rel="noopener">github.com/kevinshieldsgrp/brandmarket</a></div>
+        <div class="kv-row"><span class="k">Brand login</span><span class="mono">demo-brand@brandmarket.dev</span> / <span class="mono">password123</span></div>
+        <div class="kv-row"><span class="k">Production login</span><span class="mono">demo-production@brandmarket.dev</span> / <span class="mono">password123</span></div>
+      </div>
+      <p class="note">Repo is private (request access). App currently runs locally only — not yet deployed live.</p>
+    </div>
+
+    <div class="item full">
+      <div class="item-head"><span class="item-num">01</span><h2>What Product Agent has today</h2></div>
+      <p>A working prototype (private, local — not yet live) of a two-sided marketplace connecting <b>brands</b> with <b>production companies</b> for on-screen product placement. Visually aligned with The Product Agent's identity, but the marketplace concept itself is original — not a rebuild of the current business.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><span class="item-num">02</span><h2>The problem today</h2></div>
+      <ul>
+        <li>Manual: staff hand-match brands to productions, negotiate terms, track shipments.</li>
+        <li>Flat subscription revenue ($350–$12K/mo), decoupled from actual placements — growth capped by staff capacity.</li>
+        <li>No structured data on what converts; the insight lives in people's heads.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><span class="item-num">03</span><h2>The opportunity</h2></div>
+      <ul>
+        <li>Automate matching, requests, contracts, fulfillment — decouple growth from headcount.</li>
+        <li>Two motions: self-serve long tail + curated placements for premium productions.</li>
+        <li>Transaction data becomes a byproduct of the platform itself.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><span class="item-num">04</span><h2>Strategy</h2></div>
+      <ul>
+        <li>Automate what a human account manager does today — not a replacement for relationships.</li>
+        <li>Phased: prototype (done) → pilot with trusted partners → real payments/contracts → scale.</li>
+        <li>Land as an efficiency tool before positioning as an open marketplace.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><span class="item-num">05</span><h2>Unique value proposition</h2></div>
+      <ul>
+        <li><b>Brands</b> — pay for performance (bid for visibility), not a flat subscription.</li>
+        <li><b>Productions</b> — self-serve sourcing, no waiting on a human matchmaker.</li>
+        <li><b>Platform</b> — economics that scale with usage, not staff time.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><span class="item-num">06</span><h2>Tech stack</h2></div>
+      <p>Node.js/Express/TypeScript + Prisma (Postgres-ready) + Stripe + pluggable e-signature, on the backend. React/TypeScript/Vite/Tailwind, responsive, on the front. Status: local prototype, private repo, not deployed publicly.</p>
+      <div class="tag-row">
+        <span class="tag">NODE</span><span class="tag">TYPESCRIPT</span><span class="tag">PRISMA</span><span class="tag">REACT</span><span class="tag">STRIPE</span>
+      </div>
+    </div>
+
+    <div class="item full">
+      <div class="item-head"><span class="item-num">07</span><h2>What's been built — prototype capabilities</h2></div>
+      <ul>
+        <li>Accounts &amp; roles: brand, production, admin. Brand product catalog with paid (bid-based) visibility boosting. Discount codes.</li>
+        <li>Structured, extensible checkout: <span class="flow"><span class="step">inventory check</span><span class="arrow">→</span><span class="step">discount</span><span class="arrow">→</span><span class="step">platform fee</span><span class="arrow">→</span><span class="step">e-signature</span><span class="arrow">→</span><span class="step">payment session</span></span></li>
+        <li><b>Production Request Board</b> — productions post a need, brands respond, production accepts → real order.</li>
+        <li><b>Featured Programs</b> — admin curates a show's wishlist, brands respond, admin selects a winner → real order.</li>
+        <li>All flows verified end-to-end.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><span class="item-num">08</span><h2>What's next</h2></div>
+      <p>Real Stripe payments + real e-signature (code ready, need live accounts) → matching/recommendation → brand↔production messaging → fulfillment tracking → polish &amp; infrastructure (hosting, production database, CI).</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><span class="item-num">09</span><h2>Feedback we want — one use case (e.g. Netflix)</h2></div>
+      <ul>
+        <li>Would prop/costume teams actually self-serve a request board, or is a human relationship still required at this scale?</li>
+        <li>What would make them trust a platform-tracked order over today's informal process?</li>
+        <li>Does curated Featured Programs fit a season-long need better than open self-serve?</li>
+        <li>What's realistic economics from their side?</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-head"><span class="item-num">10</span><h2>Open strategic questions</h2></div>
+      <ul>
+        <li>Companion tool for the existing business, or a standalone offering?</li>
+        <li>Who curates Featured Programs long-term — staff only, or eventually self-serve?</li>
+        <li>Pricing: per-order fee vs. subscription vs. hybrid?</li>
+        <li>Access: exclusive to the existing vetted network, or open more broadly?</li>
+        <li>Liability: who owns a lost/damaged product or an IP/likeness issue?</li>
+      </ul>
+    </div>
+
+    <div class="item full">
+      <div class="item-head"><span class="item-num">11</span><h2>Additional items worth discussing</h2></div>
+      <ul>
+        <li><b>Success metrics</b> — requests fulfilled without staff intervention, brand response rate, time-to-fulfillment vs. today's manual baseline.</li>
+        <li><b>Pilot structure</b> — 2–3 trusted brand + production partners, time-boxed, specific hypotheses to test.</li>
+        <li><b>Risks to watch</b> — two-sided cold start; automation undercutting the high-touch feel that's currently a selling point; payment/contract flows raise the compliance bar.</li>
+        <li><b>Competitive landscape</b> — who else is structuring this space, and what's defensible about existing relationships and curation expertise as a starting point.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>Discussion guide — internal, for partner review</footer>
+
+</div>
+
+</body>
+</html>
