@@ -202,6 +202,35 @@
     font-style:italic;
   }
 
+  .req-block{ display:flex; flex-direction:column; gap:6px; }
+  .req-block + .req-block{
+    margin-top:4px;
+    padding-top:12px;
+    border-top:1px solid var(--border);
+  }
+  .req-head{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .req-label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    background:var(--ink);
+    color:var(--bg);
+    border-radius:5px;
+    padding:2px 8px;
+    flex:none;
+  }
+  .req-label.p1{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--border-strong);
+  }
+  .req-note{
+    font-size:12.5px;
+    color:var(--ink-muted);
+    font-style:italic;
+  }
+
   .tag-row{ display:flex; flex-wrap:wrap; gap:6px; margin-top:2px; }
   .tag{
     font-family:"IBM Plex Mono",monospace;
@@ -250,25 +279,14 @@
 
   <div class="masthead">
     <span class="eyebrow"><span class="dot"></span>Internal · for discussion</span>
-    <h1>Discussion Guide <mark>— Marketplace</mark></h1>
-    <p class="dek">A working session brief on the brand↔production marketplace prototype: what exists, what it's solving for, and the calls we need to make together.</p>
+    <h1>Discussion Guide — Marketplace</h1>
+    <p class="dek">Session brief to help drive a discussion on the marketplace concept and next steps to validate the requirements to build a rough prototype to show a few clients.</p>
     <div class="meta-row">
-      <span><b>Prepared by</b> Kevin Shields</span>
       <span><b>Date</b> September 10, 2026</span>
     </div>
   </div>
 
   <div class="agenda">
-
-    <div class="item full try-it">
-      <div class="item-head"><span class="item-num">00</span><h2>Live demo</h2></div>
-      <div class="kv">
-        <div class="kv-row"><span class="k">Repo</span><a href="https://github.com/kevinshieldsgrp/brandmarket" target="_blank" rel="noopener">github.com/kevinshieldsgrp/brandmarket</a></div>
-        <div class="kv-row"><span class="k">Accounts used</span><span class="mono">demo-brand@brandmarket.dev</span> / <span class="mono">password123</span></div>
-        <div class="kv-row"><span class="k"></span><span class="mono">demo-production@brandmarket.dev</span> / <span class="mono">password123</span></div>
-      </div>
-      <p class="note">Demoed live in the meeting, running on Kevin's machine — not yet a self-serve link. Repo is private, for reference.</p>
-    </div>
 
     <div class="item full">
       <div class="item-head"><span class="item-num">01</span><h2>What Product Agent has today</h2></div>
@@ -311,8 +329,35 @@
       </ul>
     </div>
 
+    <div class="item full">
+      <div class="item-head"><span class="item-num">06</span><h2>Core requirements</h2></div>
+      <div class="req-block">
+        <div class="req-head"><span class="req-label">P0</span><span class="req-note">Can build a prototype on the side — required to show a client, just the next step</span></div>
+        <ul>
+          <li>Two-sided accounts &amp; roles (brand / production / admin) — <b>built</b></li>
+          <li>Brand catalog + paid (bid-based) visibility — <b>built</b></li>
+          <li>Structured checkout flow: inventory → discount → fee → e-signature → payment — <b>built</b></li>
+          <li>Self-serve sourcing — production request board — <b>built</b></li>
+          <li>Admin-curated sourcing — Featured Programs — <b>built</b></li>
+          <li>Live hosted version — clients need a link, not a screen-share</li>
+          <li>Stripe in test mode — makes the transaction feel real without needing live payments</li>
+        </ul>
+      </div>
+      <div class="req-block">
+        <div class="req-head"><span class="req-label p1">P1</span><span class="req-note">Needs a dedicated 3–5 days</span></div>
+        <ul>
+          <li>Real e-signature (DocuSign) — current auto-sign stub is enough for a demo</li>
+          <li>Matching/recommendation automation</li>
+          <li>Brand ↔ production messaging</li>
+          <li>Fulfillment/shipping tracking</li>
+          <li>Polish: image upload, multi-seat brand accounts, notifications</li>
+          <li>Production database, CI, broader infrastructure</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="item">
-      <div class="item-head"><span class="item-num">06</span><h2>Tech stack</h2></div>
+      <div class="item-head"><span class="item-num">07</span><h2>Tech stack</h2></div>
       <p>Node.js/Express/TypeScript + Prisma (Postgres-ready) + Stripe + pluggable e-signature, on the backend. React/TypeScript/Vite/Tailwind, responsive, on the front. Status: local prototype, private repo, not deployed publicly.</p>
       <div class="tag-row">
         <span class="tag">NODE</span><span class="tag">TYPESCRIPT</span><span class="tag">PRISMA</span><span class="tag">REACT</span><span class="tag">STRIPE</span>
@@ -320,7 +365,7 @@
     </div>
 
     <div class="item full">
-      <div class="item-head"><span class="item-num">07</span><h2>What's been built — prototype capabilities</h2></div>
+      <div class="item-head"><span class="item-num">08</span><h2>What's been built — prototype capabilities</h2></div>
       <ul>
         <li>Accounts &amp; roles: brand, production, admin. Brand product catalog with paid (bid-based) visibility boosting. Discount codes.</li>
         <li>Structured, extensible checkout: <span class="flow"><span class="step">inventory check</span><span class="arrow">→</span><span class="step">discount</span><span class="arrow">→</span><span class="step">platform fee</span><span class="arrow">→</span><span class="step">e-signature</span><span class="arrow">→</span><span class="step">payment session</span></span></li>
@@ -331,12 +376,12 @@
     </div>
 
     <div class="item">
-      <div class="item-head"><span class="item-num">08</span><h2>What's next</h2></div>
+      <div class="item-head"><span class="item-num">09</span><h2>What's next</h2></div>
       <p>Real Stripe payments + real e-signature (code ready, need live accounts) → matching/recommendation → brand↔production messaging → fulfillment tracking → polish &amp; infrastructure (hosting, production database, CI).</p>
     </div>
 
     <div class="item">
-      <div class="item-head"><span class="item-num">09</span><h2>Feedback we want — one use case (e.g. Netflix)</h2></div>
+      <div class="item-head"><span class="item-num">10</span><h2>Feedback we want — one use case (e.g. Netflix)</h2></div>
       <ul>
         <li>Would prop/costume teams actually self-serve a request board, or is a human relationship still required at this scale?</li>
         <li>What would make them trust a platform-tracked order over today's informal process?</li>
@@ -346,7 +391,7 @@
     </div>
 
     <div class="item">
-      <div class="item-head"><span class="item-num">10</span><h2>Open strategic questions</h2></div>
+      <div class="item-head"><span class="item-num">11</span><h2>Open strategic questions</h2></div>
       <ul>
         <li>Companion tool for the existing business, or a standalone offering?</li>
         <li>Who curates Featured Programs long-term — staff only, or eventually self-serve?</li>
@@ -357,13 +402,23 @@
     </div>
 
     <div class="item full">
-      <div class="item-head"><span class="item-num">11</span><h2>Additional items worth discussing</h2></div>
+      <div class="item-head"><span class="item-num">12</span><h2>Additional items worth discussing</h2></div>
       <ul>
         <li><b>Success metrics</b> — requests fulfilled without staff intervention, brand response rate, time-to-fulfillment vs. today's manual baseline.</li>
         <li><b>Pilot structure</b> — 2–3 trusted brand + production partners, time-boxed, specific hypotheses to test.</li>
         <li><b>Risks to watch</b> — two-sided cold start; automation undercutting the high-touch feel that's currently a selling point; payment/contract flows raise the compliance bar.</li>
         <li><b>Competitive landscape</b> — who else is structuring this space, and what's defensible about existing relationships and curation expertise as a starting point.</li>
       </ul>
+    </div>
+
+    <div class="item full try-it">
+      <div class="item-head"><span class="item-num">13</span><h2>Live demo</h2></div>
+      <div class="kv">
+        <div class="kv-row"><span class="k">Repo</span><a href="https://github.com/kevinshieldsgrp/brandmarket" target="_blank" rel="noopener">github.com/kevinshieldsgrp/brandmarket</a></div>
+        <div class="kv-row"><span class="k">Accounts used</span><span class="mono">demo-brand@brandmarket.dev</span> / <span class="mono">password123</span></div>
+        <div class="kv-row"><span class="k"></span><span class="mono">demo-production@brandmarket.dev</span> / <span class="mono">password123</span></div>
+      </div>
+      <p class="note">Demoed live in the meeting, running on Kevin's machine — not yet a self-serve link. Repo is private, for reference.</p>
     </div>
 
   </div>
