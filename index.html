@@ -231,6 +231,34 @@
     font-style:italic;
   }
 
+  .compare-wrap{ overflow-x:auto; }
+  .compare-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  .compare-table th{
+    text-align:left;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    padding:0 12px 8px 0;
+    border-bottom:1px solid var(--border-strong);
+  }
+  .compare-table td{
+    padding:9px 12px 9px 0;
+    border-bottom:1px solid var(--border);
+    vertical-align:top;
+    color:var(--ink);
+  }
+  .compare-table tr:last-child td{ border-bottom:none; }
+  .compare-table td:first-child, .compare-table th:first-child{
+    width:42%;
+    color:var(--ink-muted);
+  }
+
   .tag-row{ display:flex; flex-wrap:wrap; gap:6px; margin-top:2px; }
   .tag{
     font-family:"IBM Plex Mono",monospace;
@@ -293,13 +321,31 @@
       <p>A two-sided marketplace connecting <b>brands</b> with <b>production companies</b> for on-screen product placement. What automation specifically could solve:</p>
       <ul>
         <li>The expertise and brand relationships are the real asset — staff know which brands fit which shows, productions trust the curation. Automation isn't meant to replace that.</li>
-        <li>What doesn't scale is doing the matching, terms, and shipment tracking by hand for every request — that rides entirely on staff bandwidth.</li>
         <li>Flat subscription revenue ($350–$12K/mo) is also decoupled from placement volume — automation could let growth track demand, not headcount.</li>
       </ul>
     </div>
 
+    <div class="item full">
+      <div class="item-head"><span class="item-num">02</span><h2>What's there today, what we've automated</h2></div>
+      <p>A closer look at how a request happens today, and what the prototype already picks up:</p>
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>Today</th><th>What we've built</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A brand request starts as a message on the product page, with one structured field (return required).</td><td>A structured checkout — quantity, project, dates, delivery address, and terms all captured with the request.</td></tr>
+            <tr><td>Production needs are gathered via a request form into a shared spreadsheet.</td><td>A production request board — the same intake, live and searchable inside the platform.</td></tr>
+            <tr><td>Availability is described in the product listing itself.</td><td>Quantity tracked per product, automatically adjusted as requests are fulfilled.</td></tr>
+            <tr><td>Terms are agreed through the conversation.</td><td>A contract/e-signature step built into the request flow.</td></tr>
+            <tr><td>Brands and productions coordinate shipping directly.</td><td>Fulfillment/shipping tracking — next up on the roadmap.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <div class="item">
-      <div class="item-head"><span class="item-num">02</span><h2>The opportunity</h2></div>
+      <div class="item-head"><span class="item-num">03</span><h2>The opportunity</h2></div>
       <ul>
         <li>Automate matching, requests, contracts, fulfillment — decouple growth from headcount.</li>
         <li>Two motions: self-serve long tail + curated placements for premium productions.</li>
@@ -308,7 +354,7 @@
     </div>
 
     <div class="item">
-      <div class="item-head"><span class="item-num">03</span><h2>Strategy</h2></div>
+      <div class="item-head"><span class="item-num">04</span><h2>Strategy</h2></div>
       <ul>
         <li>Automate what a human account manager does today — not a replacement for relationships.</li>
         <li>Phased: prototype (done) → pilot with trusted partners → real payments/contracts → scale.</li>
@@ -317,7 +363,7 @@
     </div>
 
     <div class="item">
-      <div class="item-head"><span class="item-num">04</span><h2>Unique value proposition</h2></div>
+      <div class="item-head"><span class="item-num">05</span><h2>Unique value proposition</h2></div>
       <ul>
         <li><b>Brands</b> — pay for performance (bid for visibility), not a flat subscription.</li>
         <li><b>Productions</b> — self-serve sourcing, no waiting on a human matchmaker.</li>
@@ -326,7 +372,7 @@
     </div>
 
     <div class="item full">
-      <div class="item-head"><span class="item-num">05</span><h2>Core requirements</h2></div>
+      <div class="item-head"><span class="item-num">06</span><h2>Core requirements</h2></div>
       <div class="req-block">
         <div class="req-head"><span class="req-label">P0</span><span class="req-note">Can build a prototype on the side — required to show a client, just the next step</span></div>
         <ul>
@@ -353,7 +399,7 @@
     </div>
 
     <div class="item">
-      <div class="item-head"><span class="item-num">06</span><h2>Open strategic questions</h2></div>
+      <div class="item-head"><span class="item-num">07</span><h2>Open strategic questions</h2></div>
       <ul>
         <li>Companion tool for the existing business, or a standalone offering?</li>
         <li>Who curates Featured Programs long-term — staff only, or eventually self-serve?</li>
@@ -364,7 +410,7 @@
     </div>
 
     <div class="item full">
-      <div class="item-head"><span class="item-num">07</span><h2>Additional items worth discussing</h2></div>
+      <div class="item-head"><span class="item-num">08</span><h2>Additional items worth discussing</h2></div>
       <ul>
         <li><b>Success metrics</b> — requests fulfilled without staff intervention, brand response rate, time-to-fulfillment vs. today's manual baseline.</li>
         <li><b>Pilot structure</b> — 2–3 trusted brand + production partners, time-boxed, specific hypotheses to test.</li>
@@ -374,7 +420,7 @@
     </div>
 
     <div class="item full try-it">
-      <div class="item-head"><span class="item-num">08</span><h2>Live demo</h2></div>
+      <div class="item-head"><span class="item-num">09</span><h2>Live demo</h2></div>
       <p>A working prototype — private, local, not yet live. Visually aligned with The Product Agent's identity, but the marketplace concept itself is original, not a rebuild of the current business.</p>
       <div class="kv">
         <div class="kv-row"><span class="k">Repo</span><a href="https://github.com/kevinshieldsgrp/brandmarket" target="_blank" rel="noopener">github.com/kevinshieldsgrp/brandmarket</a></div>
@@ -387,7 +433,7 @@
   </div>
 
     <div class="item">
-      <div class="item-head"><span class="item-num">09</span><h2>Tech stack</h2></div>
+      <div class="item-head"><span class="item-num">10</span><h2>Tech stack</h2></div>
       <p>Node.js/Express/TypeScript + Prisma (Postgres-ready) + Stripe + pluggable e-signature, on the backend. React/TypeScript/Vite/Tailwind, responsive, on the front. Status: local prototype, private repo, not deployed publicly.</p>
       <div class="tag-row">
         <span class="tag">NODE</span><span class="tag">TYPESCRIPT</span><span class="tag">PRISMA</span><span class="tag">REACT</span><span class="tag">STRIPE</span>
@@ -395,7 +441,7 @@
     </div>
 
     <div class="item full">
-      <div class="item-head"><span class="item-num">10</span><h2>What's been built — prototype capabilities</h2></div>
+      <div class="item-head"><span class="item-num">11</span><h2>What's been built — prototype capabilities</h2></div>
       <ul>
         <li>Accounts &amp; roles: brand, production, admin. Brand product catalog with paid (bid-based) visibility boosting. Discount codes.</li>
         <li>Structured, extensible checkout: <span class="flow"><span class="step">inventory check</span><span class="arrow">→</span><span class="step">discount</span><span class="arrow">→</span><span class="step">platform fee</span><span class="arrow">→</span><span class="step">e-signature</span><span class="arrow">→</span><span class="step">payment session</span></span></li>
@@ -406,12 +452,12 @@
     </div>
 
     <div class="item">
-      <div class="item-head"><span class="item-num">11</span><h2>What's next</h2></div>
+      <div class="item-head"><span class="item-num">12</span><h2>What's next</h2></div>
       <p>Real Stripe payments + real e-signature (code ready, need live accounts) → matching/recommendation → brand↔production messaging → fulfillment tracking → polish &amp; infrastructure (hosting, production database, CI).</p>
     </div>
 
     <div class="item">
-      <div class="item-head"><span class="item-num">12</span><h2>Feedback we want — one use case (e.g. Netflix)</h2></div>
+      <div class="item-head"><span class="item-num">13</span><h2>Feedback we want — one use case (e.g. Netflix)</h2></div>
       <ul>
         <li>Would prop/costume teams actually self-serve a request board, or is a human relationship still required at this scale?</li>
         <li>What would make them trust a platform-tracked order over today's informal process?</li>
